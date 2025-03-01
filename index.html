@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-C++自定义排序规则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-猪三必看" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" class="article-date">
-  <time class="dt-published" datetime="2025-02-28T11:12:09.515Z" itemprop="datePublished">2025-02-28</time>
+    <a href="/2025/03/01/%E7%8C%AA%E4%B8%89%E5%BF%85%E7%9C%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-03-01T11:23:13.000Z" itemprop="datePublished">2025-03-01</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/">自定义排序规则</a>
+      <a class="p-name article-title" href="/2025/03/01/%E7%8C%AA%E4%B8%89%E5%BF%85%E7%9C%8B/">猪三必看</a>
     </h1>
   
 
@@ -91,90 +91,11 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍三个常用于结构体的自定义排序规则的方法。</p>
-<h3 id="1、使用函数指针"><a href="#1、使用函数指针" class="headerlink" title="1、使用函数指针"></a>1、使用函数指针</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool cmp(const node&amp; a, const node&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">	if(a.data1 != b.data1) return a.data1 &lt; b.data1;</span><br><span class="line">	else return a.data2 &gt; b.data2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此函数的两个参数加<code>const</code>的原因是<strong>防止传入的参数被修改导致排序发生错误</strong>，函数的排序规则是先按照<code>data1</code>升序排序，如果<code>data1</code>一样的话，就按照<code>data2</code>降序排序。具体用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int data1 , data2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bool cmp(const node&amp; a, const node&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">	if(a.data1 != b.data1) return a.data1 &lt; b.data1;</span><br><span class="line">	else return a.data2 &gt; b.data2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	node nodes[5];</span><br><span class="line">	nodes[0].data1 = 1;</span><br><span class="line">	nodes[0].data2 = 5;</span><br><span class="line">	</span><br><span class="line">	nodes[1].data1 = 2;</span><br><span class="line">	nodes[1].data2 = 4;</span><br><span class="line">	</span><br><span class="line">	nodes[2].data1 = 1;</span><br><span class="line">	nodes[2].data2 = 4;</span><br><span class="line">	</span><br><span class="line">	nodes[3].data1 = 2;</span><br><span class="line">	nodes[3].data2 = 5;</span><br><span class="line"></span><br><span class="line">	sort(nodes , nodes+4 , cmp); //需要传入第三个参数</span><br><span class="line">	</span><br><span class="line">	for(int i = 0;i &lt; 4;i ++ )&#123;</span><br><span class="line">		cout &lt;&lt; nodes[i].data1 &lt;&lt; &quot; &quot; &lt;&lt; nodes[i].data2 &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 5</span><br><span class="line">1 4</span><br><span class="line">2 5</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、重载运算符"><a href="#2、重载运算符" class="headerlink" title="2、重载运算符"></a>2、重载运算符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct node&#123;</span><br><span class="line">	int data1 , data2;</span><br><span class="line">	</span><br><span class="line">	bool operator &lt; (const node&amp; b) const &#123;</span><br><span class="line">		if(data1 != b.data1) return data1 &lt; b.data1;</span><br><span class="line">		else return data2 &gt; b.data2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>此函数的参数加<code>const</code>原因同上，第二个<code>const</code>的作用是<strong>防止这个函数修改结构体中的成员变量</strong>。此函数的排序规则同上。具体用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int data1 , data2;</span><br><span class="line">	</span><br><span class="line">	bool operator &lt; (const node&amp; b) const &#123;</span><br><span class="line">		if(data1 != b.data1) return data1 &lt; b.data1;</span><br><span class="line">		else return data2 &gt; b.data2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	node nodes[5];</span><br><span class="line">	nodes[0].data1 = 1;</span><br><span class="line">	nodes[0].data2 = 5;</span><br><span class="line">	</span><br><span class="line">	nodes[1].data1 = 2;</span><br><span class="line">	nodes[1].data2 = 4;</span><br><span class="line">	</span><br><span class="line">	nodes[2].data1 = 1;</span><br><span class="line">	nodes[2].data2 = 4;</span><br><span class="line">	</span><br><span class="line">	nodes[3].data1 = 2;</span><br><span class="line">	nodes[3].data2 = 5;</span><br><span class="line"></span><br><span class="line">	sort(nodes , nodes+4); //此时就不需要传入第三个参数了</span><br><span class="line">	</span><br><span class="line">	for(int i = 0;i &lt; 4;i ++ )&#123;</span><br><span class="line">		cout &lt;&lt; nodes[i].data1 &lt;&lt; &quot; &quot; &lt;&lt; nodes[i].data2 &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 5</span><br><span class="line">1 4</span><br><span class="line">2 5</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、使用仿函数"><a href="#3、使用仿函数" class="headerlink" title="3、使用仿函数"></a>3、使用仿函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct cmp&#123;</span><br><span class="line">	bool operator()(const node&amp; a, const node&amp; b) const &#123;</span><br><span class="line">		if(a.data1 != b.data1) return a.data1 &lt; b.data1;</span><br><span class="line">		else return a.data2 &gt; b.data2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>此函数的所有<code>const</code>作用同上，排序规则同上。具体用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int data1 , data2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct cmp&#123;</span><br><span class="line">	bool operator()(const node&amp; a, const node&amp; b) const &#123;</span><br><span class="line">		if(a.data1 != b.data1) return a.data1 &lt; b.data1;</span><br><span class="line">		else return a.data2 &gt; b.data2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	node nodes[5];</span><br><span class="line">	nodes[0].data1 = 1;</span><br><span class="line">	nodes[0].data2 = 5;</span><br><span class="line">	</span><br><span class="line">	nodes[1].data1 = 2;</span><br><span class="line">	nodes[1].data2 = 4;</span><br><span class="line">	</span><br><span class="line">	nodes[2].data1 = 1;</span><br><span class="line">	nodes[2].data2 = 4;</span><br><span class="line">	</span><br><span class="line">	nodes[3].data1 = 2;</span><br><span class="line">	nodes[3].data2 = 5;</span><br><span class="line"></span><br><span class="line">	sort(nodes , nodes+4 , cmp()); //注意第三个参数后面要加上小括号</span><br><span class="line">	</span><br><span class="line">	for(int i = 0;i &lt; 4;i ++ )&#123;</span><br><span class="line">		cout &lt;&lt; nodes[i].data1 &lt;&lt; &quot; &quot; &lt;&lt; nodes[i].data2 &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 5</span><br><span class="line">1 4</span><br><span class="line">2 5</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
-
-<p>以上就是三种常用的自定义排序规则。</p>
-
+        <h1 id="臭猪！！！！！！！！！！！！！！！！！！！！！！！！"><a href="#臭猪！！！！！！！！！！！！！！！！！！！！！！！！" class="headerlink" title="臭猪！！！！！！！！！！！！！！！！！！！！！！！！"></a>臭猪！！！！！！！！！！！！！！！！！！！！！！！！</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" data-id="cm7oscyg40001osvubhut4q81" data-title="自定义排序规则" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-C++字符串常用操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2025-02-26T06:03:20.820Z" itemprop="datePublished">2025-02-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">字符串常用操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="1、输入字符串"><a href="#1、输入字符串" class="headerlink" title="1、输入字符串"></a>1、输入字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scanf(&quot;%s&quot;,&amp;str); 或者 cin &gt;&gt; str;</span><br></pre></td></tr></table></figure>
-<p>这两种是不能读取空格和回车的，如果需要读取空格，可以用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getline(cin , str);</span><br></pre></td></tr></table></figure>
-<p>这个函数的作用是读取一整行字符串，只有遇到回车才会结束，有时在调用getline之前需要用<code>getchar();</code>把多余的回车吃掉。</p>
-<h3 id="2、截取子串"><a href="#2、截取子串" class="headerlink" title="2、截取子串"></a>2、截取子串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.substr(7,3); //从下标7开始，截取长度为3的子串</span><br></pre></td></tr></table></figure>
-<p>注：初始下标为0</p>
-<h3 id="3、查找给定字符串"><a href="#3、查找给定字符串" class="headerlink" title="3、查找给定字符串"></a>3、查找给定字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.find(&quot;Hello&quot;); //从str里查找字符串&quot;Hello&quot;</span><br></pre></td></tr></table></figure>
-<p>如果str中存在字符串”Hello”，该函数会返回字符串”Hello”<strong>第一次</strong>出现的下标；如果不存在，返回值为<strong>str.npos</strong>。</p>
-<h3 id="4、替换字符串"><a href="#4、替换字符串" class="headerlink" title="4、替换字符串"></a>4、替换字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.replace(1 , 2 , &quot;Hello&quot;); //替换从下标1开始的2个字符为&quot;Hello&quot;</span><br></pre></td></tr></table></figure>
-<p>字符串”1234”执行上述代码结果为”1Hello4”</p>
-<h3 id="5、插入字符串"><a href="#5、插入字符串" class="headerlink" title="5、插入字符串"></a>5、插入字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.insert(2 , &quot;Hello&quot;); //在下标为2的位置插入字符串&quot;Hello&quot;</span><br></pre></td></tr></table></figure>
-<p>注：插入完成后”Hello”中的”H”下标为2。</p>
-<h3 id="6、删除字符串"><a href="#6、删除字符串" class="headerlink" title="6、删除字符串"></a>6、删除字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.erase(3 , 4); //删除从下标3开始的4个字符</span><br></pre></td></tr></table></figure>
-
-<p>以上就是字符串常用的函数，还有一个点：字符串中也是有<code>begin()</code>和<code>end()</code>的，其中<code>str.begin()</code>指向str中的<strong>第一个字符</strong>；<br><code>str.end()</code>指向str中的<strong>最后一个字符的下一个位置</strong>，是没有意义的。访问有意义的指针时需要加上<code>*</code>，例如：<code>*str.begin()</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" data-id="cm7oscyg10000osvue5nye8xo" data-title="字符串常用操作" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/01/%E7%8C%AA%E4%B8%89%E5%BF%85%E7%9C%8B/" data-id="cm7q47iao0000y4vucfg68c2u" data-title="猪三必看" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -204,7 +125,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li></ul>
     </div>
   </div>
 
@@ -217,11 +138,7 @@
       <ul>
         
           <li>
-            <a href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/">自定义排序规则</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">字符串常用操作</a>
+            <a href="/2025/03/01/%E7%8C%AA%E4%B8%89%E5%BF%85%E7%9C%8B/">猪三必看</a>
           </li>
         
       </ul>
