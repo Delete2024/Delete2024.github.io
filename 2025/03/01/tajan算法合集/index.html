@@ -6,17 +6,17 @@
   
   <title>tajan算法合集 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="前言：tajan算法的模板12345678910111213141516171819202122232425262728293031323334#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;const int N &#x3D; 110; &#x2F;&#x2F;图中的节点个数vector&lt;int&gt; g[N]; &#x2F;&#x2F;存储图的数据结构int dfn[N],low[">
+  <meta name="description" content="无描述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tajan算法合集">
 <meta property="og:url" content="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言：tajan算法的模板12345678910111213141516171819202122232425262728293031323334#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;const int N &#x3D; 110; &#x2F;&#x2F;图中的节点个数vector&lt;int&gt; g[N]; &#x2F;&#x2F;存储图的数据结构int dfn[N],low[">
+<meta property="og:description" content="无描述">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/1.png">
 <meta property="og:image" content="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/2.png">
 <meta property="article:published_time" content="2025-03-01T02:04:53.446Z">
-<meta property="article:modified_time" content="2025-03-02T10:43:46.630Z">
+<meta property="article:modified_time" content="2025-03-02T10:52:47.064Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/1.png">
@@ -96,7 +96,8 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
+        <p>无描述</p>
+<span id="more"></span>
 
 <h2 id="前言：tajan算法的模板"><a href="#前言：tajan算法的模板" class="headerlink" title="前言：tajan算法的模板"></a>前言：<code>tajan</code>算法的模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N = 110; //图中的节点个数</span><br><span class="line">vector&lt;int&gt; g[N]; //存储图的数据结构</span><br><span class="line">int dfn[N],low[N]; //dfn记录这个点第一次被访问到的编号，low记录这个点能访问到的最早的点的编号</span><br><span class="line">int cnt; //用于记录编号</span><br><span class="line">void tajan(int x,int fx)&#123;</span><br><span class="line">    dfn[x] = low[x] = ++ cnt; //第一次访问到这个点，给它一个编号，此时该点能访问到的编号最小的点是它自己</span><br><span class="line">    for(auto k:g[x])&#123;</span><br><span class="line">    	if(k == fx) continue; //防止原路返回（有向图不需要这一句）</span><br><span class="line">    	</span><br><span class="line">    	if(dfn[k] == 0)&#123; //如果x的子节点k没有被访问过</span><br><span class="line">    		tajan(k , x); //递归访问k</span><br><span class="line">    		low[x] = min(low[x] , low[k]); //判断k是否能访问到编号比x小的点(x的祖先)，并且更新x的low</span><br><span class="line">		&#125;else&#123; //如果k已经被访问过了</span><br><span class="line">			low[x] = min(low[x] , dfn[k]); //判断k是不是x的祖先，如果是，那么更新x的low</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//循环结束之后，x的low就表示x能访问到的最早的祖先</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	//建图（点的编号从1开始，1~n）</span><br><span class="line">    int n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    while(m -- )&#123;</span><br><span class="line">        int x,y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        g[x].push_back(y);</span><br><span class="line">        g[y].push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line">    //调用tajan,从1开始搜（这里默认图是连通的，如果不连通就得用for循环遍历）</span><br><span class="line">    tajan(1 , 0);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -126,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" data-id="cm7ri7qbr0003ycvu9gmf3xwp" data-title="tajan算法合集" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" data-id="cm7rijd7u0003uovu6paq5kwn" data-title="tajan算法合集" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
