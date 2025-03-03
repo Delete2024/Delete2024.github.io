@@ -6,15 +6,15 @@
   
   <title>自定义排序规则 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文介绍三个常用于结构体的自定义排序规则的方法。">
+  <meta name="description" content="无描述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义排序规则">
 <meta property="og:url" content="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文介绍三个常用于结构体的自定义排序规则的方法。">
+<meta property="og:description" content="无描述">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-28T11:12:09.515Z">
-<meta property="article:modified_time" content="2025-03-02T10:51:09.428Z">
+<meta property="article:modified_time" content="2025-03-03T01:44:38.680Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -93,9 +93,10 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>本文介绍三个常用于结构体的自定义排序规则的方法。</p>
+        <p>无描述</p>
 <span id="more"></span>
 
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍三个常用于结构体的自定义排序规则的方法。</p>
 <h3 id="1、使用函数指针"><a href="#1、使用函数指针" class="headerlink" title="1、使用函数指针"></a>1、使用函数指针</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool cmp(const node&amp; a, const node&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">	if(a.data1 != b.data1) return a.data1 &lt; b.data1;</span><br><span class="line">	else return a.data2 &gt; b.data2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此函数的两个参数加<code>const</code>的原因是<strong>防止传入的参数被修改导致排序发生错误</strong>，函数的排序规则是先按照<code>data1</code>升序排序，如果<code>data1</code>一样的话，就按照<code>data2</code>降序排序。具体用法：</p>
@@ -125,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" data-id="cm7rijd7q0000uovudda92oot" data-title="自定义排序规则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" data-id="cm7sz8ybn0001k4vu6f2x7447" data-title="自定义排序规则" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
