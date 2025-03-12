@@ -69,60 +69,16 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-算法设计与分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/11/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2025-03-11T13:38:33.000Z" itemprop="datePublished">2025-03-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/11/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">赵*生大全</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">typedef int Status;</span><br><span class="line">#define OK 1</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OVERFLOW -2</span><br><span class="line">#define TRUE 1</span><br><span class="line">#define FALSE 0</span><br><span class="line">#define MAXSIZE 20</span><br><span class="line">typedef int KeyType;</span><br><span class="line">typedef int InfoType;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    KeyType key;</span><br><span class="line">    InfoType info;</span><br><span class="line">&#125;RecordType;</span><br><span class="line">typedef struct&#123;</span><br><span class="line">    int length;</span><br><span class="line">    RecordType r[MAXSIZE];</span><br><span class="line">&#125;SqList;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    void CreateSqList(SqList &amp;L);</span><br><span class="line">    void DisplaySqList(SqList &amp;L);</span><br><span class="line">    void HeapSort(SqList &amp;L);</span><br><span class="line">    SqList L;</span><br><span class="line">    CreateSqList(L);</span><br><span class="line">    printf(&quot;堆排序以前,&quot;);DisplaySqList(L);</span><br><span class="line">    printf(&quot;开始堆排序,\n&quot;);HeapSort(L);</span><br><span class="line">    printf(&quot;结束堆排序.\n&quot;);</span><br><span class="line">    printf(&quot;堆排序以后,&quot;);DisplaySqList(L);</span><br><span class="line">&#125;</span><br><span class="line">Status LessThan(KeyType k1,KeyType k2)</span><br><span class="line">&#123;</span><br><span class="line">    if(k1&lt;k2) return TRUE;</span><br><span class="line">    else return FALSE;</span><br><span class="line">&#125;</span><br><span class="line">void CreateSqList(SqList &amp;L)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    // printf(&quot;请输入关键字的个数:&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;L.length);</span><br><span class="line">    // printf(&quot;请输入%d个关键字:&quot;,L.length);</span><br><span class="line">    for(i=1;i&lt;=L.length;i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;L.r[i].key);</span><br><span class="line">    for(i=1;i&lt;=L.length;i++)</span><br><span class="line">        L.r[i].info=i;</span><br><span class="line">&#125;</span><br><span class="line">void DisplaySqList(SqList &amp;L)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    printf(&quot;顺序表为:&quot;);</span><br><span class="line">    for(i=1;i&lt;=L.length;i++)</span><br><span class="line">        printf(&quot; %d(%d)&quot;,L.r[i].key,L.r[i].info);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void HeapAdjust(SqList &amp;L,int s,int m)&#123;</span><br><span class="line">    Status LessThan(KeyType k1,KeyType k2);</span><br><span class="line">    int j;</span><br><span class="line">    L.r[0]=L.r[s];</span><br><span class="line">    for(j=2*s;j&lt;=m;j=2*s)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j&lt;m&amp;&amp;LessThan(L.r[j].key,L.r[j+1].key)) j++;</span><br><span class="line">        if(!LessThan(L.r[0].key,L.r[j].key)) break;</span><br><span class="line">        L.r[s]=L.r[j];</span><br><span class="line">        s=j;</span><br><span class="line">    &#125;</span><br><span class="line">    L.r[s]=L.r[0];</span><br><span class="line">&#125;</span><br><span class="line">void HeapSort(SqList &amp;L)</span><br><span class="line">&#123;</span><br><span class="line">    void HeapAdjust(SqList &amp;L,int s,int m);</span><br><span class="line">    void DisplaySqList(SqList &amp;L);</span><br><span class="line">    int i;</span><br><span class="line">    for(i=L.length/2;i&gt;=1;i--)</span><br><span class="line">        HeapAdjust(L,i,L.length);</span><br><span class="line">    printf(&quot;初始化,建立堆,以后,&quot;);DisplaySqList(L);</span><br><span class="line">    for(i=L.length;i&gt;1;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        L.r[0]=L.r[i];</span><br><span class="line">        L.r[i]=L.r[1];</span><br><span class="line">        L.r[1]=L.r[0];</span><br><span class="line">        HeapAdjust(L,1,i-1);</span><br><span class="line">        printf(&quot;i=%d后,&quot;,i);DisplaySqList(L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef int Status;</span><br><span class="line">#define OK 1</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OVERFLOW -2</span><br><span class="line">#define TRUE 1</span><br><span class="line">#define FALSE 0</span><br><span class="line">#define MAX_SPACE 100</span><br><span class="line">#define MAX_NUM_OF_KEY 8</span><br><span class="line">#define RADIX 10</span><br><span class="line">typedef int KeyType,InfoType;</span><br><span class="line">typedef struct SLNode</span><br><span class="line">&#123;</span><br><span class="line">    KeyType keys[MAX_NUM_OF_KEY];</span><br><span class="line">    InfoType info;</span><br><span class="line">    int next;</span><br><span class="line">&#125;SLNode;</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    int recordnum,keynum;</span><br><span class="line">    SLNode r[MAX_SPACE];</span><br><span class="line">&#125;SLinkList;</span><br><span class="line">typedef int ArrayType[RADIX];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    void CreateSLinkList(SLinkList &amp;L);</span><br><span class="line">    void DisplaySLinkList(SLinkList &amp;L);</span><br><span class="line">    void RadixSort(SLinkList &amp;L);</span><br><span class="line">    SLinkList L;</span><br><span class="line">    CreateSLinkList(L);</span><br><span class="line">    cout&lt;&lt;&quot;基数排序以前,&quot;;</span><br><span class="line">    DisplaySLinkList(L);</span><br><span class="line">    cout&lt;&lt;&quot;开始基数排序,&quot;&lt;&lt;endl;</span><br><span class="line">    RadixSort(L);</span><br><span class="line">    cout&lt;&lt;&quot;结束基数排序.&quot;&lt;&lt;endl&lt;&lt;&quot;基数排序以后,&quot;;</span><br><span class="line">    DisplaySLinkList(L);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CreateSLinkList(SLinkList &amp;L)</span><br><span class="line">&#123;</span><br><span class="line">    int i,j;</span><br><span class="line">    KeyType a,b;</span><br><span class="line">    //cout&lt;&lt;&quot;请输入关键字的个数:&quot;;</span><br><span class="line">    cin&gt;&gt;L.recordnum;</span><br><span class="line">    L.keynum=0;</span><br><span class="line">    for(i=1;i&lt;=L.recordnum;i++)&#123;</span><br><span class="line">        for(j=MAX_NUM_OF_KEY-1;j&gt;=0;j--)&#123;</span><br><span class="line">            L.r[i].keys[j]=0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //cout&lt;&lt;&quot;请输入&quot;&lt;&lt;L.recordnum&lt;&lt;&quot;个关键字&quot;;</span><br><span class="line">    for(i=1;i&lt;=L.recordnum;i++)&#123;</span><br><span class="line">        j=0;</span><br><span class="line">        cin&gt;&gt;a;</span><br><span class="line">        while(a)&#123;</span><br><span class="line">            b=a%RADIX;</span><br><span class="line">            L.r[i].keys[j]=b;</span><br><span class="line">            j++;</span><br><span class="line">            a/=RADIX;</span><br><span class="line">        &#125;</span><br><span class="line">        if(j&gt;L.keynum) L.keynum=j;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i=1;i&lt;=L.recordnum;i++) L.r[i].info=i;</span><br><span class="line">    for(i=0;i&lt;=L.recordnum-1;i++) L.r[i].next=i+1;</span><br><span class="line">    L.r[L.recordnum].next=0;</span><br><span class="line">&#125;</span><br><span class="line">void DisplaySLinkList(SLinkList &amp;L)</span><br><span class="line">&#123;</span><br><span class="line">    int i,j;</span><br><span class="line">    KeyType a;</span><br><span class="line">    cout&lt;&lt;&quot;静态单链表为:&quot;;</span><br><span class="line">    i=L.r[0].next;</span><br><span class="line">    while(i)&#123;</span><br><span class="line">        j=L.keynum-1;</span><br><span class="line">        a=L.r[i].keys[j];</span><br><span class="line">        j--;</span><br><span class="line">        while(j&gt;=0)&#123;</span><br><span class="line">            a=a*10+L.r[i].keys[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;a&lt;&lt;&quot;(&quot;&lt;&lt;L.r[i].info&lt;&lt;&quot;) &quot;;</span><br><span class="line">        i=L.r[i].next;</span><br><span class="line">    &#125;</span><br><span class="line">    puts(&quot;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void Distribute(SLinkList &amp;L,int j,ArrayType &amp;f,ArrayType &amp;e)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    KeyType b;</span><br><span class="line">    while(L.r[0].next)&#123;</span><br><span class="line">        i=L.r[0].next;</span><br><span class="line">        L.r[0].next=L.r[i].next;</span><br><span class="line">        L.r[i].next=0;</span><br><span class="line">        b=L.r[i].keys[j];</span><br><span class="line">        if(f[b]==0)&#123;</span><br><span class="line">            f[b]=i;</span><br><span class="line">            e[b]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            L.r[e[b]].next=i;</span><br><span class="line">            e[b]=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void Collect(SLinkList &amp;L,int j,ArrayType &amp;f,ArrayType &amp;e)</span><br><span class="line">&#123;</span><br><span class="line">    int b,t=0;</span><br><span class="line">    for(b=0;b&lt;=RADIX-1;b++)&#123;</span><br><span class="line">        if(f[b])&#123;</span><br><span class="line">            L.r[t].next=f[b];</span><br><span class="line">            f[b]=0;</span><br><span class="line">            t=e[b];</span><br><span class="line">            e[b]=0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void RadixSort(SLinkList &amp;L)</span><br><span class="line">&#123;</span><br><span class="line">    void Distribute(SLinkList &amp;L,int j,ArrayType &amp;f,ArrayType &amp;e);</span><br><span class="line">    void Collect(SLinkList &amp;L,int j,ArrayType &amp;f,ArrayType &amp;e);</span><br><span class="line">    void DisplaySLinkList(SLinkList &amp;L);</span><br><span class="line">    int j,b;</span><br><span class="line">    ArrayType f,e;</span><br><span class="line">    for(b=0;b&lt;=RADIX-1;b++)&#123;</span><br><span class="line">        f[b]=0;</span><br><span class="line">        e[b]=0;</span><br><span class="line">    &#125;</span><br><span class="line">    for(j=0;j&lt;=L.keynum-1;j++)&#123;</span><br><span class="line">        Distribute(L,j,f,e);</span><br><span class="line">        Collect(L,j,f,e);</span><br><span class="line">        cout&lt;&lt;&quot;j=&quot;&lt;&lt;j&lt;&lt;&quot;后,&quot;;</span><br><span class="line">        DisplaySLinkList(L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/11/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="cm84jq5xs000kiovudunt37l1" data-title="赵*生大全" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E8%AF%95/" rel="tag">考试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-蓝桥杯单片机备赛03-定时器模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" class="article-date">
   <time class="dt-published" datetime="2025-03-09T07:47:01.000Z" itemprop="datePublished">2025-03-09</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -139,14 +95,21 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
+        <p>无描述</p>
+        
+          <p class="article-more-link">
+            <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/#more">Read More</a>
+          </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" data-id="cm84jq5xr000diovu7ikr8a33" data-title="蓝桥杯单片机备赛03-定时器模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" data-id="cm85hswu7000vfkvuh39q0u86" data-title="蓝桥杯单片机备赛03-定时器模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li></ul>
+
     </footer>
   </div>
   
@@ -181,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B01-%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/" data-id="cm84jq5xp0008iovu36we191f" data-title="蓝桥杯单片机备赛01-知识补充" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B01-%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/" data-id="cm85hswtz0008fkvu84t2cua8" data-title="蓝桥杯单片机备赛01-知识补充" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -200,7 +163,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a>
+    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
   </div>
 
   </div>
@@ -228,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/" data-id="cm84jq5xq000ciovu4r6l8n1t" data-title="蓝桥杯单片机备赛-LED模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/" data-id="cm85hswu7000ufkvu5daz4b87" data-title="蓝桥杯单片机备赛-LED模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -277,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/" data-id="cm84jq5xp0007iovugn87fldl" data-title="素数筛" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/" data-id="cm85hswu2000dfkvu3t0thzll" data-title="素数筛" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -326,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/" data-id="cm84jq5xo0006iovuf6qnghlu" data-title="最近公共祖先（LCA）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/" data-id="cm85hswu0000cfkvuaczx1yt1" data-title="最近公共祖先（LCA）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -375,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" data-id="cm84jq5xk0001iovu1ix8fg4p" data-title="STL模板库" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" data-id="cm85hswtv0006fkvugqm78c6b" data-title="STL模板库" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -424,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" data-id="cm84jq5xm0003iovubex75vyw" data-title="tajan算法合集" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" data-id="cm85hswty0007fkvufsiagcpy" data-title="tajan算法合集" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -473,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" data-id="cm84jq5xs000hiovufxzi46if" data-title="自定义排序规则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" data-id="cm85hswtr0003fkvu6nz2ccjo" data-title="自定义排序规则" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -522,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" data-id="cm84jq5xt000oiovu48q688pc" data-title="字符串常用操作" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" data-id="cm85hswto0001fkvu89m50lpv" data-title="字符串常用操作" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -546,7 +509,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
     </div>
   </div>
 
@@ -556,7 +519,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%83%E8%AF%95/" rel="tag">考试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li></ul>
     </div>
   </div>
 
@@ -566,7 +529,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">LED模块</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 10px;">STL模板库</a> <a href="/tags/tajan/" style="font-size: 10px;">tajan</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 10px;">素数筛</a> <a href="/tags/%E8%80%83%E8%AF%95/" style="font-size: 10px;">考试</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 10px;">自定义排序规则</a>
+      <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">LED模块</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 10px;">STL模板库</a> <a href="/tags/tajan/" style="font-size: 10px;">tajan</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">定时器模块</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 10px;">素数筛</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 10px;">自定义排序规则</a>
     </div>
   </div>
 
@@ -588,10 +551,6 @@
       <ul>
         
           <li>
-            <a href="/2025/03/11/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">赵*生大全</a>
-          </li>
-        
-          <li>
             <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛03-定时器模块</a>
           </li>
         
@@ -605,6 +564,10 @@
         
           <li>
             <a href="/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/">素数筛</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/">最近公共祖先（LCA）</a>
           </li>
         
       </ul>
