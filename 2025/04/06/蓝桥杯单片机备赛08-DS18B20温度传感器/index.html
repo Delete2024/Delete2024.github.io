@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>蓝桥杯单片机备赛08-DS18B20温度传感器 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="无描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯单片机备赛08-DS18B20温度传感器">
+<meta property="og:url" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="无描述">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/1.png">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/2.png">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/3.png">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/4.png">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/5.png">
+<meta property="article:published_time" content="2025-04-06T07:57:22.000Z">
+<meta property="article:modified_time" content="2025-04-06T09:51:13.887Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="DS18B20温度传感器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-蓝桥杯单片机备赛08-DS18B20温度传感器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-04-06T07:57:22.000Z" itemprop="datePublished">2025-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      蓝桥杯单片机备赛08-DS18B20温度传感器
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无描述</p>
+<span id="more"></span>
+
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>先看<strong>原理图</strong>：</p>
+<img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/1.png" style="zoom:67%;">
+
+<p>可以看到共有3个引脚，VDD、GND和DQ，其中VDD和GND自然不用多说。DQ是用于和单片机通信的数据通信引脚，通信采用1-Wire协议，1-Wire协议是需要一个上拉电阻的，所以DQ端也接了一个电源。具体通信过程也不需要选手掌握，赛事方会给出通信代码。</p>
+<p><strong>操作步骤：</strong>(截取自官方文档)</p>
+<p><img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/2.png"></p>
+<p>大概意思就是说，要对DS18B20进行操作必须遵循3个步骤：</p>
+<p>第一步：初始化</p>
+<p>第二步：发送一个地址命令（ROM Command），告诉单片机要跟哪一个DS18B20进行通信（因为一根总线可以挂载多个DS18B20，并且每个DS18B20都具有唯一的地址）</p>
+<p>第三步：发送功能命令（Function Command）（比如：触发温度采集，读取数据等等……）</p>
+<p><strong>具体指令：</strong></p>
+<p>1、它具体的ROM Command在官方手册中都有给出，但是由于这个板子只有一个DS18B20，所以不需要发送详细的地址，直接跟所有的DS18B20建立通信即可（类似于广播），而这个指令也确实存在，见下图：</p>
+<p><img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/3.png"></p>
+<p>SKIP ROM是DS18B20的ROM Command其中一个，作用就是跟所有的DS18B20建立通信，从而不需要发送详细地址，该命令对应的编码是CCh（0xCC）</p>
+<p>2、所有的Function Command也有给出，见下图：</p>
+<img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/4.png">
+
+<p>可以看到，功能命令（Function Command）有非常多，但是我们最常用的是前两个：Convert T（触发一次温度采集）和Read Scratchpad（读取温度值），对应的编码是44h（0x44）和BEh（0xBE）。</p>
+<p><strong>数据存储：</strong></p>
+<p>还有很重要的一点就是要知道DS18B20是怎么存储温度数据的：</p>
+<p><img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/5.png"></p>
+<p>​	上图是DS18B20的温度寄存器格式，可以看到，温度共有16位，其中bit15<del>bit11是符号位，当温度为正数时，S全为0，当温度为负数时，S全为1。bit10</del>bit0是数据位。</p>
+<p>​	但是有个不一样的点是bit0表示的并不是2^0，而是2^(-4)，这么做是为了能记录小数。所以我们读取的时候就得加一点别的操作了。首先先用<code>unsigned int</code>型的变量存储这16位，然后再除以2^4，就能得到真正的温度了。至于为什么要除以2^4，解释如下：</p>
+<p>​	我们用<code>unsigned int</code>来存储数据的时候，最低位表示的是2^0，而实际的最低为表示2^(-4)，相当于放大了2^4倍来存储（不只是最低位，不难发现，所有数据位都被放大了2^4（16）倍），这就导致存储结果相较于实际结果放大了16倍，因此需要除以16（2^4）。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>把上面的原理搞懂了之后就可以开始写代码了，还是先看赛事方给的通信代码（1-Wire协议）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">/*	# 	单总线代码片段说明</span><br><span class="line">	1. 	本文件夹中提供的驱动代码供参赛选手完成程序设计参考。</span><br><span class="line">	2. 	参赛选手可以自行编写相关代码或以该代码为基础，根据所选单片机类型、运行速度和试题</span><br><span class="line">		中对单片机时钟频率的要求，进行代码调试和修改。</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void Delay_OneWire(unsigned int t)  </span><br><span class="line">&#123;</span><br><span class="line">	unsigned char i;</span><br><span class="line">	while(t--)&#123;</span><br><span class="line">		for(i=0;i&lt;12;i++);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void Write_DS18B20(unsigned char dat)</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char i;</span><br><span class="line">	for(i=0;i&lt;8;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		DQ = 0;</span><br><span class="line">		DQ = dat&amp;0x01;</span><br><span class="line">		Delay_OneWire(5);</span><br><span class="line">		DQ = 1;</span><br><span class="line">		dat &gt;&gt;= 1;</span><br><span class="line">	&#125;</span><br><span class="line">	Delay_OneWire(5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">unsigned char Read_DS18B20(void)</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char i;</span><br><span class="line">	unsigned char dat;</span><br><span class="line">  </span><br><span class="line">	for(i=0;i&lt;8;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		DQ = 0;</span><br><span class="line">		dat &gt;&gt;= 1;</span><br><span class="line">		DQ = 1;</span><br><span class="line">		if(DQ)</span><br><span class="line">		&#123;</span><br><span class="line">			dat |= 0x80;</span><br><span class="line">		&#125;	    </span><br><span class="line">		Delay_OneWire(5);</span><br><span class="line">	&#125;</span><br><span class="line">	return dat;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">bit init_ds18b20(void)</span><br><span class="line">&#123;</span><br><span class="line">  	bit initflag = 0;</span><br><span class="line">  	</span><br><span class="line">  	DQ = 1;</span><br><span class="line">  	Delay_OneWire(12);</span><br><span class="line">  	DQ = 0;</span><br><span class="line">  	Delay_OneWire(80);</span><br><span class="line">  	DQ = 1;</span><br><span class="line">  	Delay_OneWire(10); </span><br><span class="line">    initflag = DQ;     </span><br><span class="line">  	Delay_OneWire(5);</span><br><span class="line">  </span><br><span class="line">  	return initflag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>给出了四个函数，我们要用的是后面三个：写数据、读数据和初始化。</p>
+<p>读取温度：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">unsigned int Read_Temp()</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char low,high;</span><br><span class="line">	</span><br><span class="line">	init_ds18b20();		//先进行初始化</span><br><span class="line">	Write_DS18B20(0xcc);	//发送一个SKIP ROM指令，表示对所有DS18B20通信</span><br><span class="line">	Write_DS18B20(0x44);	//触发一次温度采集</span><br><span class="line">	</span><br><span class="line">	init_ds18b20();</span><br><span class="line">	Write_DS18B20(0xcc);</span><br><span class="line">	Write_DS18B20(0xBE);	//触发读取操作，执行完这一步之后，DS18B20会在总线上返回温度数据</span><br><span class="line">	</span><br><span class="line">	low = Read_DS18B20();	//每次返回一个字节，低八位先返回</span><br><span class="line">	high = Read_DS18B20();	//再返回高八位</span><br><span class="line">	</span><br><span class="line">	return ((high &lt;&lt; 8) | low);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数返回的不是真正的温度值，根据上面的分析，返回值还需要除以16，这个操作一般在调用端完成。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" data-id="cm95grc4k0011ccvu1i7herfy" data-title="蓝桥杯单片机备赛08-DS18B20温度传感器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="tag">DS18B20温度传感器</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">蓝桥杯单片机备赛07-DS1302实时时钟</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" rel="tag">DS1302实时时钟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="tag">DS18B20温度传感器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" rel="tag">按键模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" rel="tag">数码管模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" rel="tag">蜂鸣器及继电器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" style="font-size: 10px;">DS1302实时时钟</a> <a href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" style="font-size: 10px;">DS18B20温度传感器</a> <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 20px;">LED模块</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 10px;">STL模板库</a> <a href="/tags/tajan/" style="font-size: 10px;">tajan</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">定时器模块</a> <a href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">按键模块</a> <a href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">数码管模块</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 10px;">素数筛</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 10px;">自定义排序规则</a> <a href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" style="font-size: 10px;">蜂鸣器及继电器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/">蓝桥杯单片机备赛08-DS18B20温度传感器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/">蓝桥杯单片机备赛07-DS1302实时时钟</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B06-%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/">蓝桥杯单片机备赛06-蜂鸣器及继电器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/05/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B05-%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛05-按键模块</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛04-数码管模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
