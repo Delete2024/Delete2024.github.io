@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>蓝桥杯单片机备赛07-DS1302实时时钟 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="无描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯单片机备赛07-DS1302实时时钟">
+<meta property="og:url" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="无描述">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/1.png">
+<meta property="og:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/2.png">
+<meta property="article:published_time" content="2025-04-06T03:37:31.000Z">
+<meta property="article:modified_time" content="2025-04-06T07:54:50.240Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="DS1302实时时钟">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-蓝桥杯单片机备赛07-DS1302实时时钟" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" class="article-date">
+  <time class="dt-published" datetime="2025-04-06T03:37:31.000Z" itemprop="datePublished">2025-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      蓝桥杯单片机备赛07-DS1302实时时钟
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无描述</p>
+<span id="more"></span>
+
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/1.png" style="zoom:67%;">
+
+<p>通过原理图可以看到DS1302共有八个引脚，其中VCC2和VCC1都可以接电源（作用是一样的），VCC1画了个叉号是因为在板子上只需要接一个电源引脚，另一个电源引脚的作用一般是外接电源（比如电池），确保板子断电之后DS1302仍然可以工作，在蓝桥杯的比赛中并不需要这个功能，所以直接打叉了。X1和X2是连接了一个晶振作为时钟源，频率是32.768K HZ。GND直接接地，没啥好说的。剩下三个引脚是和单片机通信的三个引脚，具体通信过程不需要选手掌握，赛事方会提供通信代码供选手参考。</p>
+<p>下面是从官方使用手册中截取的一张表格：</p>
+<p><img src="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/2.png"></p>
+<p>​	DS1302中存储数据用的编码是BCD码（把十进制数的每一位用二进制数来表示），以第一行为例：bit0<del>bit3存储的是秒的个位，bit4</del>bit6存储的是秒的十位（由于十位不超过5，所以只需要3位二进制数）。比如43秒转换成BCD码就是100(4) 0011(3)，再存储到对应的位中（bit6是最高位，bit0是最低位）。</p>
+<p>​	表格的前两列表示的是地址，READ是读取数据的地址，WRITE是写入数据的地址。</p>
+<p>​	还有一个需要注意的是倒数第二行的WP，表示的是写保护，每次写入数据都需要把写保护解除（置0），写入完成后再恢复（置1），可以保证数据安全。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>通信代码（赛事方给出）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">/*	# 	DS1302代码片段说明</span><br><span class="line">	1. 	本文件夹中提供的驱动代码供参赛选手完成程序设计参考。</span><br><span class="line">	2. 	参赛选手可以自行编写相关代码或以该代码为基础，根据所选单片机类型、运行速度和试题</span><br><span class="line">		中对单片机时钟频率的要求，进行代码调试和修改。</span><br><span class="line">*/								</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void Write_Ds1302(unsigned  char temp) </span><br><span class="line">&#123;</span><br><span class="line">	unsigned char i;</span><br><span class="line">	for (i=0;i&lt;8;i++)     	</span><br><span class="line">	&#123; </span><br><span class="line">		SCK = 0;</span><br><span class="line">		SDA = temp&amp;0x01;</span><br><span class="line">		temp&gt;&gt;=1; </span><br><span class="line">		SCK=1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void Write_Ds1302_Byte( unsigned char address,unsigned char dat )     </span><br><span class="line">&#123;</span><br><span class="line"> 	RST=0;	_nop_();</span><br><span class="line"> 	SCK=0;	_nop_();</span><br><span class="line"> 	RST=1; 	_nop_();  </span><br><span class="line"> 	Write_Ds1302(address);	</span><br><span class="line"> 	Write_Ds1302(dat);		</span><br><span class="line"> 	RST=0; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">unsigned char Read_Ds1302_Byte ( unsigned char address )</span><br><span class="line">&#123;</span><br><span class="line"> 	unsigned char i,temp=0x00;</span><br><span class="line"> 	RST=0;	_nop_();</span><br><span class="line"> 	SCK=0;	_nop_();</span><br><span class="line"> 	RST=1;	_nop_();</span><br><span class="line"> 	Write_Ds1302(address);</span><br><span class="line"> 	for (i=0;i&lt;8;i++) 	</span><br><span class="line"> 	&#123;		</span><br><span class="line">		SCK=0;</span><br><span class="line">		temp&gt;&gt;=1;	</span><br><span class="line"> 		if(SDA)</span><br><span class="line"> 		temp|=0x80;	</span><br><span class="line"> 		SCK=1;</span><br><span class="line">	&#125; </span><br><span class="line"> 	RST=0;	_nop_();</span><br><span class="line"> 	SCK=0;	_nop_();</span><br><span class="line">	SCK=1;	_nop_();</span><br><span class="line">	SDA=0;	_nop_();</span><br><span class="line">	SDA=1;	_nop_();</span><br><span class="line">	return (temp);			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面给出的三个函数中我们开发只需要用到两个：<code>Write_Ds1302_Byte</code>和<code>Read_Ds1302_Byte</code>。</p>
+<p>写入时间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void Set_Rtc(unsigned char* pucRtc)		//pucRtc长度为3，从0~2分别为：时、分、秒（24小时制）</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char temp;</span><br><span class="line">	Write_Ds1302_Byte(0x8e,0x00);	//关闭写保护</span><br><span class="line">	</span><br><span class="line">	temp = ((pucRtc[0]/10) &lt;&lt; 4) | (pucRtc[0]%10);	//小时的BCD码</span><br><span class="line">	Write_Ds1302_Byte(0x84,temp);</span><br><span class="line">	</span><br><span class="line">	temp = ((pucRtc[1]/10) &lt;&lt; 4) | (pucRtc[1]%10);	//分钟的BCD码</span><br><span class="line">	Write_Ds1302_Byte(0x82,temp);</span><br><span class="line">	</span><br><span class="line">	temp = ((pucRtc[2]/10) &lt;&lt; 4) | (pucRtc[2]%10);	//秒的BCD码</span><br><span class="line">	Write_Ds1302_Byte(0x80,temp);</span><br><span class="line">	</span><br><span class="line">	Write_Ds1302_Byte(0x8e,0x80);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读取时间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void Get_Rtc(unsigned char* pucRtc)		//pucRtc长度为3，从0~2分别为：时、分、秒（24小时制）</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char temp;</span><br><span class="line">	</span><br><span class="line">	temp = Read_Ds1302_Byte(0x85)	//读小时</span><br><span class="line">	pucRtc[0] = (temp &gt;&gt; 4)*10 + (temp &amp; 0x0f);		//读出来是BCD码，进行转换</span><br><span class="line">	</span><br><span class="line">	temp = Read_Ds1302_Byte(0x83)	//读分钟</span><br><span class="line">	pucRtc[1] = (temp &gt;&gt; 4)*10 + (temp &amp; 0x0f);		//读出来是BCD码，进行转换</span><br><span class="line">	</span><br><span class="line">	temp = Read_Ds1302_Byte(0x81)	//读秒</span><br><span class="line">	pucRtc[2] = (temp &gt;&gt; 4)*10 + (temp &amp; 0x0f);		//读出来是BCD码，进行转换</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" data-id="cm95cnjar001hqovuelkq3mdq" data-title="蓝桥杯单片机备赛07-DS1302实时时钟" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" rel="tag">DS1302实时时钟</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B06-%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">蓝桥杯单片机备赛06-蜂鸣器及继电器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" rel="tag">DS1302实时时钟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" rel="tag">按键模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" rel="tag">数码管模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" rel="tag">蜂鸣器及继电器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" style="font-size: 10px;">DS1302实时时钟</a> <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 20px;">LED模块</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 10px;">STL模板库</a> <a href="/tags/tajan/" style="font-size: 10px;">tajan</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">定时器模块</a> <a href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">按键模块</a> <a href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">数码管模块</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 10px;">素数筛</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 10px;">自定义排序规则</a> <a href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" style="font-size: 10px;">蜂鸣器及继电器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/">蓝桥杯单片机备赛07-DS1302实时时钟</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B06-%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/">蓝桥杯单片机备赛06-蜂鸣器及继电器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/05/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B05-%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛05-按键模块</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛04-数码管模块</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛03-定时器模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
