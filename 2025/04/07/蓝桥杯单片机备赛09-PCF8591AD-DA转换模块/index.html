@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>蓝桥杯单片机备赛09-PCF8591AD-DA转换模块 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="无描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯单片机备赛09-PCF8591AD-DA转换模块">
+<meta property="og:url" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="无描述">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/1.png">
+<meta property="og:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/2.png">
+<meta property="og:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/3.png">
+<meta property="og:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/4.png">
+<meta property="og:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/5.png">
+<meta property="og:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/6.png">
+<meta property="article:published_time" content="2025-04-07T08:55:27.000Z">
+<meta property="article:modified_time" content="2025-04-07T13:45:01.266Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="AD&#x2F;DA转换模块">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-蓝桥杯单片机备赛09-PCF8591AD-DA转换模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time class="dt-published" datetime="2025-04-07T08:55:27.000Z" itemprop="datePublished">2025-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      蓝桥杯单片机备赛09-PCF8591AD-DA转换模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无描述</p>
+<span id="more"></span>
+
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>先看原理图：</p>
+<img src="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/1.png" style="zoom:67%;">
+
+<p>可以看到，PCF8591共有16个引脚，左上角的AIN0~AIN3是四个模拟信号输入端口，在这块板子上只用到了两个：AIN1和AIN3，其中AIN1接到了光敏电阻，AIN3接到了电位器（可调电阻），如图所示：</p>
+<img src="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/2.png" style="zoom:67%;">
+
+<p>左下角A0~A2是表示PCF8591的地址的引脚，VSS作用和GND差不多。右边AOUT是把数字信号转成模拟信号（DAC）输出的引脚。VREF是量程，表示满量程时的电压。SCL和SDA是PCF8591和单片机通信的引脚，采用iic协议，通信代码赛事方会给出。</p>
+<p>接下来看一下iic的通信步骤：</p>
+<img src="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/3.png" style="zoom:67%;">
+
+<img src="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/4.png" style="zoom:67%;">
+
+<p>上面那张是写模式下的流程图，下面那张是读模式下的流程图。</p>
+<p>先看写模式：</p>
+<p>​	首先是一个S，代表开始通信，接下来是一个ADDRESS是一个芯片的地址（地址的最后一位是0表示写，最后一位是1表示读）。然后是一个A，代表应答信号，如果单片机向芯片发送信息，芯片收到之后需要给单片机返回一个应答信号表示成功接收（不成功就重新发）。下一位是CONTROL BYTE是一个控制命令，同样的，收到后也需要返回一个应答信号。接下来就是发送要写入的数据（每发送一个字节都需要应答）。最后P表示结束，S表示重新开始（继续通信）。</p>
+<p>然后是读模式：</p>
+<p>​	开头和写模式是一样的，先开始，然后是地址。接下来就是PCF8591在写入数据，单片机在读取了（单片机收到之后也需要发送应答信号，可以看到图中第二个应答信号是from master，就是来自主机（单片机）），接收完最后一个字节后就不需要应答信号了，然后就是P，结束通信。</p>
+<p>知道了通信步骤之后来看一下通信过程中的那些命令究竟是什么：</p>
+<p><strong>ADDRESS：</strong></p>
+<p>​	address表示芯片的地址，它占一个字节，其中的每一位的含义在使用手册中都有给出：</p>
+<p><img src="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/5.png"></p>
+<p>高四位是1001是固定的，A2、A1、A0就是一开始原理图中提到的那三个表示地址的引脚，在这块板子上这三个引脚是都接地了，所以都是0，最后一位就是控制读（1）还是写（0）。所以<strong>写入时地址为0x90，读取时地址为0x91</strong>。</p>
+<p><strong>CONTROL BYTE：</strong></p>
+<p>​	Control byte是一个功能型的字节，它的含义如图：</p>
+<img src="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/6.png" style="zoom:67%;">
+
+<p>从低位到高位看：最后两位（A&#x2F;D CHANNEL NUMBER）是选择读取哪一路的模拟信号（一共有四路：AIN0~AIN3）。第三位（AUTO-INCREMENT FLAG）是自动增益控制的标志位，置1是激活，但是一般不需要这个，所以置0就好了。第五、六位（ANALOGUE INPUT PROGRAMMING）是控制模拟信号的输入模式，一般采用第一种（00），四个单端输入，即四个通道互不影响。第七位（ANALOGUE OUTPUT ENABLE FLAG）控制是否允许模拟输出，当我们进行DAC的时候，需要把数字信号转换成模拟信号输出，这一位需要置1；进行ADC的时候，虽然不需要输出，但是把这一位变为1也没影响，所以这一位一直保持为1就好了。综上所述：<strong>要采集光敏电阻（AIN1）时，Control Byte为0x41；要采集可调电阻（AIN3）时，Control Byte为0x43</strong>。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>先看赛事方给出的iic通信代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">/*	#   I2C代码片段说明</span><br><span class="line">	1. 	本文件夹中提供的驱动代码供参赛选手完成程序设计参考。</span><br><span class="line">	2. 	参赛选手可以自行编写相关代码或以该代码为基础，根据所选单片机类型、运行速度和试题</span><br><span class="line">		中对单片机时钟频率的要求，进行代码调试和修改。</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">#define DELAY_TIME	10</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">static void I2C_Delay(unsigned char n)</span><br><span class="line">&#123;</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">        _nop_();_nop_();_nop_();_nop_();_nop_();</span><br><span class="line">        _nop_();_nop_();_nop_();_nop_();_nop_();</span><br><span class="line">        _nop_();_nop_();_nop_();_nop_();_nop_();		</span><br><span class="line">    &#125;</span><br><span class="line">    while(n--);      	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void I2CStart(void)</span><br><span class="line">&#123;</span><br><span class="line">    sda = 1;</span><br><span class="line">    scl = 1;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">    sda = 0;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">    scl = 0;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void I2CStop(void)</span><br><span class="line">&#123;</span><br><span class="line">    sda = 0;</span><br><span class="line">    scl = 1;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">    sda = 1;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void I2CSendByte(unsigned char byt)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char i;</span><br><span class="line">	</span><br><span class="line">    for(i=0; i&lt;8; i++)&#123;</span><br><span class="line">        scl = 0;</span><br><span class="line">		I2C_Delay(DELAY_TIME);</span><br><span class="line">        if(byt &amp; 0x80)&#123;</span><br><span class="line">            sda = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            sda = 0;</span><br><span class="line">        &#125;</span><br><span class="line">		I2C_Delay(DELAY_TIME);</span><br><span class="line">        scl = 1;</span><br><span class="line">        byt &lt;&lt;= 1;</span><br><span class="line">		I2C_Delay(DELAY_TIME);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    scl = 0;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">unsigned char I2CReceiveByte(void)</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char da;</span><br><span class="line">	unsigned char i;</span><br><span class="line">	for(i=0;i&lt;8;i++)&#123;   </span><br><span class="line">		scl = 1;</span><br><span class="line">		I2C_Delay(DELAY_TIME);</span><br><span class="line">		da &lt;&lt;= 1;</span><br><span class="line">		if(sda) </span><br><span class="line">			da |= 0x01;</span><br><span class="line">		scl = 0;</span><br><span class="line">		I2C_Delay(DELAY_TIME);</span><br><span class="line">	&#125;</span><br><span class="line">	return da;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">unsigned char I2CWaitAck(void)</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char ackbit;</span><br><span class="line">	</span><br><span class="line">    scl = 1;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">    ackbit = sda; </span><br><span class="line">    scl = 0;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">	</span><br><span class="line">	return ackbit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">void I2CSendAck(unsigned char ackbit)</span><br><span class="line">&#123;</span><br><span class="line">    scl = 0;</span><br><span class="line">    sda = ackbit; </span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">    scl = 1;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">    scl = 0; </span><br><span class="line">	sda = 1;</span><br><span class="line">	I2C_Delay(DELAY_TIME);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开发主要用到的函数有：<code>I2CStart</code>、<code>I2CStop</code>、<code>I2CSendByte</code>、<code>I2CReceiveByte</code>、<code>I2CWaitAck</code>、<code>I2CSendAck</code>。</p>
+<p>AD转换：（在读取数据之前需要先启动一次数据采集）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">unsigned char PCF8591_ADC(void)</span><br><span class="line">&#123;</span><br><span class="line">	unsigned char temp;</span><br><span class="line">	I2CStart();</span><br><span class="line">	I2CSendByte(0x90);</span><br><span class="line">	I2CWaitAck();</span><br><span class="line">	I2CSendByte(0x41);	//先启动一次数据采集，采集光敏电阻</span><br><span class="line">	I2CWaitAck();</span><br><span class="line">	</span><br><span class="line">	I2CStart();</span><br><span class="line">	I2CSendByte(0x91);	//准备读取</span><br><span class="line">	I2CWaitAck();</span><br><span class="line">	</span><br><span class="line">	temp = I2CReceiveByte();	//读取一个字节</span><br><span class="line">	I2CSendAck(0);	//发送一个接收失败，然后重新读取（把第一次的值给丢掉，具体解释见代码末尾）</span><br><span class="line">	temp = I2CReceiveByte();	//读取一个字节</span><br><span class="line">	I2CSendAck(1);	//发送成功接收的应答信号</span><br><span class="line">	I2CStop();</span><br><span class="line">	</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解释：在读取数据前需要先进行一次数据采集，然后进行读取，但是给PCF8591读取指令时，PCF8591返回的不是本次采集到的数据，是上次采集到的（具体原因解释不清），因此需要把第一次读取到的数据丢掉，保留第二次读取到的数据。</p>
+<p>DA转换：（转换完后会在排针J3中的D&#x2F;A引脚输出）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void PCF8591_DAC(unsigned char dat)</span><br><span class="line">&#123;</span><br><span class="line">	I2CStart();</span><br><span class="line">	I2CSendByte(0x90);</span><br><span class="line">	I2CWaitAck();</span><br><span class="line">	</span><br><span class="line">	I2CSendByte(0x41);	//这边是0x41还是0x43无所谓，因为我们不采集，主要是允许输出那一位要置1</span><br><span class="line">	I2CWaitAck();</span><br><span class="line">	</span><br><span class="line">	I2CSendByte(dat);</span><br><span class="line">	I2CWaitAck();</span><br><span class="line">	I2CStop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>补充：模拟信号和数字信号之间的转换关系取决于VREF引脚端的电压和最大能表示的数值，例如VREF端的电压是5V，我们用的<code>unsigned char</code>类型的数据类型存储数字信号，最大值是255，也就是说模拟信号的5V对应数字信号的255，<strong>按照这个比例进行等分</strong>就能得到二者的转换关系（模拟信号1V代表数字信号51，2V代表102，……）（至少在这个板子上是这样的，其他地方还不知道）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" data-id="cm974k3o1001pskvuew8h13b9" data-title="蓝桥杯单片机备赛09-PCF8591AD-DA转换模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" rel="tag">AD&#x2F;DA转换模块</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">蓝桥杯单片机备赛08-DS18B20温度传感器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" rel="tag">AD&#x2F;DA转换模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" rel="tag">DS1302实时时钟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="tag">DS18B20温度传感器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" rel="tag">按键模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" rel="tag">数码管模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" rel="tag">蜂鸣器及继电器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">AD/DA转换模块</a> <a href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" style="font-size: 10px;">DS1302实时时钟</a> <a href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" style="font-size: 10px;">DS18B20温度传感器</a> <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 20px;">LED模块</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 10px;">STL模板库</a> <a href="/tags/tajan/" style="font-size: 10px;">tajan</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">定时器模块</a> <a href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">按键模块</a> <a href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">数码管模块</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 10px;">素数筛</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 10px;">自定义排序规则</a> <a href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" style="font-size: 10px;">蜂鸣器及继电器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B09-PCF8591AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛09-PCF8591AD-DA转换模块</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B08-DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/">蓝桥杯单片机备赛08-DS18B20温度传感器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B07-DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/">蓝桥杯单片机备赛07-DS1302实时时钟</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B06-%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/">蓝桥杯单片机备赛06-蜂鸣器及继电器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/05/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B05-%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛05-按键模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
