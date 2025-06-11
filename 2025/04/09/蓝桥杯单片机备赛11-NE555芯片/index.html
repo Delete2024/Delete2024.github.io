@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://example.com/2025/04/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B11-NE555%E8%8A%AF%E7%89%87/2.png">
 <meta property="og:image" content="http://example.com/2025/04/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B11-NE555%E8%8A%AF%E7%89%87/3.png">
 <meta property="article:published_time" content="2025-04-09T00:45:54.000Z">
-<meta property="article:modified_time" content="2025-04-10T06:57:53.016Z">
+<meta property="article:modified_time" content="2025-06-11T12:02:16.874Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="NE555芯片">
 <meta name="twitter:card" content="summary">
@@ -126,11 +126,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(ulms % 1000 == 0)&#123;</span><br><span class="line">	uiNE555 = (TH0 &lt;&lt; 8) | TL0;</span><br><span class="line">	TL0 = 0;</span><br><span class="line">	TH0 = 0;	//记得清0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注：使用的时候需要把NE555的输出引脚（SIGNAl）和P34引脚用跳线帽接在一起，因为P34是计数器的输入端，只有接到一起才能接收到信号。那这就导致了一个问题：矩阵键盘的第四列的引脚也是P34，这就会冲突，因此在使用NE555的时候是不能扫描矩阵键盘的最后一列（S16~S19）的，比赛也不会让这两个同时出现。</p>
+<p>补充：上文说法有一个误区，原文说用计数器0还是计数器1都可以，但实际在蓝桥杯官方提供的开发板中只能用计数器0，因为NE555的输出引脚：SIGNAL和P34相邻，而P34是计数器0的输入引脚，因此只能用计数器0来计数。（计数器1的输入引脚是P35，如果能把SIGNAL和P35接到一起自然可以用计数器1，但是这个板子上做不到）</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/04/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B11-NE555%E8%8A%AF%E7%89%87/" data-id="cmai42lne001avsvu2tf53gvg" data-title="蓝桥杯单片机备赛11-NE555芯片" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/04/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B11-NE555%E8%8A%AF%E7%89%87/" data-id="cmbrwhgfn001a78vu0mku2pol" data-title="蓝桥杯单片机备赛11-NE555芯片" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
