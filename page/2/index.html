@@ -1,681 +1,242 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.1.260810"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        try {
+          const data = { value }
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-蓝桥杯单片机备赛04-数码管模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" class="article-date">
-  <time class="dt-published" datetime="2025-03-31T01:48:19.000Z" itemprop="datePublished">2025-03-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
-  </div>
+          if (ttl != null) {
+            data.expiry = Date.now() + ttl * 86400000
+          }
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛04-数码管模块</a>
-    </h1>
-  
+          localStorage.setItem(key, JSON.stringify(data))
+        } catch (e) {
+          console.error(e)
+        }
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
       
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" data-id="cmbwabgpc000khovu3ovm83uw" data-title="蓝桥杯单片机备赛04-数码管模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" rel="tag">数码管模块</a></li></ul>
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
 
-    </footer>
-  </div>
-  
-</article>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-
-  
-    <article id="post-蓝桥杯单片机备赛03-定时器模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" class="article-date">
-  <time class="dt-published" datetime="2025-03-09T07:47:01.000Z" itemprop="datePublished">2025-03-09</time>
-</a>
+      const theme = saveToLocal.get('theme')
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛03-定时器模块</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/#more">Read More</a>
-          </p>
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" data-id="cmbwabgpd000rhovu29r08k5d" data-title="蓝桥杯单片机备赛03-定时器模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-蓝桥杯单片机备赛01-知识补充" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B01-%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/" class="article-date">
-  <time class="dt-published" datetime="2025-03-09T07:46:38.000Z" itemprop="datePublished">2025-03-09</time>
-</a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B01-%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/">蓝桥杯单片机备赛01-知识补充</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/31/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B04-%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" title="蓝桥杯单片机备赛04-数码管模块">蓝桥杯单片机备赛04-数码管模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-31T01:48:19.000Z" title="发表于 2025-03-31 09:48:19">2025-03-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></span></div><div class="content">无描述   基本原理数码管的原理图如图所示：   其中从高位到低位分别是：dp,g,f,e,d,c,b,a，在这个开发板中数码管是共阳极的（0点亮），由此可以算出对应的字形码，蓝桥杯官方给出的资源数据包中也有。数码管在板子中的连接方法如图：     其中a1~dp1是控制字形码的，com1~com8是控制哪个数码管显示（1选中），用了两块不同的锁存器实现了只用P0控制八只数码管。其中两个锁存器的控制端分别连接到Y6C和Y7C，控制原理和LED一样：     上图中U25是个四或非门，其中的四个门互不干扰（1Y输出1A和1B的或非结果，2Y输出2A和2B的或非结果……），WR和GND相接（IO模式），所以Y6、Y7为低电平时对应的Y6C、Y7C是高电平，相应的锁存器打开。由于Y6、Y7是由P25、P26、P27控制，当P25、P26、P27选中Y6（Y7）时，Y6（Y7）为低电平，锁存器打开。如此一来，就用P25、P26、P27以及整个P0实现了对数码管的控制。 代码实现要编写两个函数：第一个是编译函数，把给定的数字数组（pucSeg_Buf）编译为对应的字形码数组（pucSeg_...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B03-%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" title="蓝桥杯单片机备赛03-定时器模块">蓝桥杯单片机备赛03-定时器模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-09T07:47:01.000Z" title="发表于 2025-03-09 15:47:01">2025-03-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></span></div><div class="content">无描述   ​	定时器的初始化可以通过stc-isp软件直接生成：   ​	生成之后放到新建的文件：tim.c中，并在末尾加入一行：ET0 = 1;开启中断的子开关。代码如下： tim.c中： 123456789101112#include &quot;tim.h&quot;void Timer0_Init(void)		//1毫秒@12.000MHz&#123;	AUXR |= 0x80;			//定时器时钟1T模式	TMOD &amp;= 0xF0;			//设置定时器模式	TL0 = 0x20;				//设置定时初始值	TH0 = 0xD1;				//设置定时初始值	TF0 = 0;				//清除TF0标志	TR0 = 1;				//定时器0开始计时	ET0 = 1;        		//开启中断子开关(手动加入)&#125;  tim.h中： 123#include &quot;STC15F2K60S2.H&quot;void Timer0_Init(void);  注意：在主函数中需要打开中断总开关：EA = 1;。只有这样定时器才能触发中断，还要写一下中断函...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B01-%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/" title="蓝桥杯单片机备赛01-知识补充">蓝桥杯单片机备赛01-知识补充</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-09T07:46:38.000Z" title="发表于 2025-03-09 15:46:38">2025-03-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></span></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/" title="蓝桥杯单片机备赛02-LED模块">蓝桥杯单片机备赛02-LED模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-09T05:50:43.000Z" title="发表于 2025-03-09 13:50:43">2025-03-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></span></div><div class="content">无描述   原理图：          ​	由图可知：8个LED（1-8）分别由P0口的八个引脚（0-7）控制，P0输出低电平时，LED会被点亮。但是P0不是直接控制LED的，而是通过74HC573锁存器间接控制，（74HC573锁存器的控制原理详见知识补充.），74HC573的LE引脚接到Y4C，而Y4C是由Y4和WR引脚取或非得到的。WR是由排针J13控制的，提供了两种模式：IO模式和MM模式。一般情况下使用的是IO模式，也就是把J13的2、3引脚短接，也就是说WR是直接与GND相接，就是低电平。那么这时候Y4C就等于Y4取反。而Y4是由P25、P26、P27三个引脚通过74Hc138译码器控制的，P25、P26、P27就是P2口的高三位。 ​	综上所述，LED一共由P2口的高三位以及P0口控制。当P25，P26、P27选中Y4时，Y4是低电平，Y4C是高电平，锁存器打通，把P0口的状态传给LED。当P25，P26、P27不选中Y4时，锁存器断开，LED的状态得以维持。 驱动代码led.h文件： 123#include &quot;STC15F2K60S2.H&quot;vo...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/" title="素数筛">素数筛</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-06T03:18:54.000Z" title="发表于 2025-03-06 11:18:54">2025-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">无描述   埃氏筛12345678910for(int i = 2;i &lt;= sqrt(n);i ++)&#123;	if(mark[i] == 1) continue; //只对素数倍增，不是素数肯定已经被标记过了	int j = i*2;	while(j &lt;= n)&#123;		mark[j] = 1;		j += i;	&#125;&#125;// 结束后mark[i]等于1表示不是素数，等于0表示是素数。初始全为0。    欧拉筛12345678910111213141516int prime[N] , vis[N] , k; //作用分别是：存储素数，标记是否是素数(为0表示是素数)，已经存储的素数个数 for(int i=2;i&lt;=n;i++)&#123;    if(vis[i]==0)//i是素数，则存起来        prime[k++]=i;    for(int j=0;j&lt;k;j++)//进行倍增，用i去乘以i之前(包括i)的素数    &#123;        if(i*prime[j]&gt;n)//倍增结果超出范围，退出...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/" title="最近公共祖先（LCA）">最近公共祖先（LCA）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-05T04:05:21.000Z" title="发表于 2025-03-05 12:05:21">2025-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">无描述   前言：LCA指的是在一棵树中的两个节点的最近公共祖先 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" title="STL模板库">STL模板库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-01T08:25:29.000Z" title="发表于 2025-03-01 16:25:29">2025-03-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">无描述   前言本文介绍STL模板库中几个比较常用的容器，以及其常用的函数 1、vectorvector是可变数组，其长度可以根据需要动态调整，常见用法： 定义12345vector&lt;变量类型&gt; 变量名例如：vector&lt;int&gt; v; //定义一个int类型的vectorvector&lt;char&gt; v; //定义一个char类型的vectorvector&lt;double&gt; v; //定义一个double类型的vector  除了基本数据类型之外，vector里面还可以放结构体，或者嵌套其他的容器 存储数据通过调用函数push_back()可以在容器末尾插入数据，或者用 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" title="tajan算法合集">tajan算法合集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-01T02:04:53.446Z" title="发表于 2025-03-01 10:04:53">2025-03-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">无描述   前言：tajan算法的模板12345678910111213141516171819202122232425262728293031323334#include&lt;bits/stdc++.h&gt;using namespace std;const int N = 110; //图中的节点个数vector&lt;int&gt; g[N]; //存储图的数据结构int dfn[N],low[N]; //dfn记录这个点第一次被访问到的编号，low记录这个点能访问到的最早的点的编号int cnt; //用于记录编号void tajan(int x,int fx)&#123;    dfn[x] = low[x] = ++ cnt; //第一次访问到这个点，给它一个编号，此时该点能访问到的编号最小的点是它自己    for(auto k:g[x])&#123;    	if(k == fx) continue; //防止原路返回（有向图不需要这一句）    	    	if(dfn[k] == 0)&#123; //如果x的子节点k没有被访问过    		tajan(k...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" title="自定义排序规则">自定义排序规则</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-02-28T11:12:09.515Z" title="发表于 2025-02-28 19:12:09">2025-02-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">无描述   前言本文介绍三个常用于结构体的自定义排序规则的方法。 1、使用函数指针12345bool cmp(const node&amp; a, const node&amp; b)&#123;	if(a.data1 != b.data1) return a.data1 &lt; b.data1;	else return a.data2 &gt; b.data2;&#125;  此函数的两个参数加const的原因是防止传入的参数被修改导致排序发生错误，函数的排序规则是先按照data1升序排序，如果data1一样的话，就按照data2降序排序。具体用法： 12345678910111213141516171819202122232425262728293031323334#include&lt;bits/stdc++.h&gt;using namespace std;struct node&#123;	int data1 , data2;&#125;;bool cmp(const node&amp; a, const node&amp; b)&#123;	if(a.data1 !...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="字符串常用操作">字符串常用操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-02-26T06:03:20.820Z" title="发表于 2025-02-26 14:03:20">2025-02-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">无描述   前言本文介绍几个字符串常用的操作 1、输入字符串1scanf(&quot;%s&quot;,&amp;str); 或者 cin &gt;&gt; str; 这两种是不能读取空格和回车的，如果需要读取空格，可以用： 1getline(cin , str); 这个函数的作用是读取一整行字符串，只有遇到回车才会结束，有时在调用getline之前需要用getchar();把多余的回车吃掉。 2、截取子串1str.substr(7,3); //从下标7开始，截取长度为3的子串 注：初始下标为0 3、查找给定字符串1str.find(&quot;Hello&quot;); //从str里查找字符串&quot;Hello&quot; 如果str中存在字符串”Hello”，该函数会返回字符串”Hello”第一次出现的下标；如果不存在，返回值为str.npos。 4、替换字符串1str.replace(1 , 2 , &quot;Hello&quot;); //替换从下标1开始的2个字符为&quot;Hello&quot; 字符串”1234”执行上述代码结果为”1Hello4” 5、插...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/14/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B-%E6%98%93%E9%94%99%E6%B1%87%E6%80%BB/" title="蓝桥杯单片机备赛-易错汇总">蓝桥杯单片机备赛-易错汇总</a><time datetime="2025-06-14T07:45:15.000Z" title="发表于 2025-06-14 15:45:15">2025-06-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/10/OpenCV%E5%AF%B9%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C/" title="OpenCV对图片操作">OpenCV对图片操作</a><time datetime="2025-05-10T10:54:34.000Z" title="发表于 2025-05-10 18:54:34">2025-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B12-%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/" title="蓝桥杯单片机备赛12-超声波测距">蓝桥杯单片机备赛12-超声波测距</a><time datetime="2025-04-11T09:24:40.000Z" title="发表于 2025-04-11 17:24:40">2025-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B11-NE555%E8%8A%AF%E7%89%87/" title="蓝桥杯单片机备赛11-NE555芯片">蓝桥杯单片机备赛11-NE555芯片</a><time datetime="2025-04-09T00:45:54.000Z" title="发表于 2025-04-09 08:45:54">2025-04-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/08/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B10-AT24C02(EEPROM%E8%8A%AF%E7%89%87)/" title="蓝桥杯单片机备赛10-AT24C02(EEPROM芯片)">蓝桥杯单片机备赛10-AT24C02(EEPROM芯片)</a><time datetime="2025-04-08T11:21:32.000Z" title="发表于 2025-04-08 19:21:32">2025-04-08</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"><span class="card-category-list-name">单片机</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><span class="card-category-list-name">树莓派</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">6</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/" style="font-size: 1.1em; color: #999">超声波测距</a> <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 1.5em; color: #99a9bf">LED模块</a> <a href="/tags/AT24C02-EEPROM%E8%8A%AF%E7%89%87/" style="font-size: 1.1em; color: #999">AT24C02(EEPROM芯片)</a> <a href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" style="font-size: 1.1em; color: #999">蜂鸣器及继电器</a> <a href="/tags/OpenCV%E5%AF%B9%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C/" style="font-size: 1.1em; color: #999">OpenCV对图片操作</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 1.1em; color: #999">自定义排序规则</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 1.1em; color: #999">素数筛</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 1.1em; color: #999">STL模板库</a> <a href="/tags/NE555%E8%8A%AF%E7%89%87/" style="font-size: 1.1em; color: #999">NE555芯片</a> <a href="/tags/%E6%98%93%E9%94%99%E6%B1%87%E6%80%BB/" style="font-size: 1.1em; color: #999">易错汇总</a> <a href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" style="font-size: 1.1em; color: #999">数码管模块</a> <a href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" style="font-size: 1.1em; color: #999">DS18B20温度传感器</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" style="font-size: 1.1em; color: #999">定时器模块</a> <a href="/tags/AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" style="font-size: 1.1em; color: #999">AD/DA转换模块</a> <a href="/tags/tajan/" style="font-size: 1.1em; color: #999">tajan</a> <a href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" style="font-size: 1.1em; color: #999">DS1302实时时钟</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.1em; color: #999">字符串</a> <a href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" style="font-size: 1.1em; color: #999">按键模块</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 1.1em; color: #999">最近公共祖先</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div>
+  
+    <ul class="card-archive-list">
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B01-%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/" data-id="cmbwabgpd000ohovu61mj73r9" data-title="蓝桥杯单片机备赛01-知识补充" class="article-share-link"><span class="fa fa-share">Share</span></a>
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-蓝桥杯单片机备赛02-LED模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/" class="article-date">
-  <time class="dt-published" datetime="2025-03-09T05:50:43.000Z" itemprop="datePublished">2025-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/">蓝桥杯单片机备赛02-LED模块</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
       
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/#more">Read More</a>
-          </p>
-        
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B02-LED%E6%A8%A1%E5%9D%97/" data-id="cmbwabgpc000hhovu75hnd6r1" data-title="蓝桥杯单片机备赛02-LED模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-素数筛" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/" class="article-date">
-  <time class="dt-published" datetime="2025-03-06T03:18:54.000Z" itemprop="datePublished">2025-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/">素数筛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/06/%E7%B4%A0%E6%95%B0%E7%AD%9B/" data-id="cmbwabgpb000dhovu3y5jdjxh" data-title="素数筛" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-最近公共祖先（LCA）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2025-03-05T04:05:21.000Z" itemprop="datePublished">2025-03-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/">最近公共祖先（LCA）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/05/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%EF%BC%88LCA%EF%BC%89/" data-id="cmbwabgp90008hovu19hick8v" data-title="最近公共祖先（LCA）" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-STL模板库" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" class="article-date">
-  <time class="dt-published" datetime="2025-03-01T08:25:29.000Z" itemprop="datePublished">2025-03-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/">STL模板库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/01/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" data-id="cmbwabgp80006hovuhc2r7b9z" data-title="STL模板库" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-tajan算法合集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" class="article-date">
-  <time class="dt-published" datetime="2025-03-01T02:04:53.446Z" itemprop="datePublished">2025-03-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/">tajan算法合集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/01/tajan%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" data-id="cmbwabgph001ghovuex3yfe6g" data-title="tajan算法合集" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-C++自定义排序规则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" class="article-date">
-  <time class="dt-published" datetime="2025-02-28T11:12:09.515Z" itemprop="datePublished">2025-02-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/">自定义排序规则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/28/C++%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" data-id="cmbwabgp20003hovu1xwi7lef" data-title="自定义排序规则" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-C++字符串常用操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2025-02-26T06:03:20.820Z" itemprop="datePublished">2025-02-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">字符串常用操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>无描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/26/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" data-id="cmbwabgp00001hovu2aib7mv2" data-title="字符串常用操作" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" rel="tag">AD&#x2F;DA转换模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT24C02-EEPROM%E8%8A%AF%E7%89%87/" rel="tag">AT24C02(EEPROM芯片)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" rel="tag">DS1302实时时钟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="tag">DS18B20温度传感器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LED%E6%A8%A1%E5%9D%97/" rel="tag">LED模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NE555%E8%8A%AF%E7%89%87/" rel="tag">NE555芯片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV%E5%AF%B9%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C/" rel="tag">OpenCV对图片操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" rel="tag">STL模板库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tajan/" rel="tag">tajan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" rel="tag">定时器模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" rel="tag">按键模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" rel="tag">数码管模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%98%93%E9%94%99%E6%B1%87%E6%80%BB/" rel="tag">易错汇总</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" rel="tag">素数筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="tag">自定义排序规则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" rel="tag">蜂鸣器及继电器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/" rel="tag">超声波测距</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AD-DA%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">AD/DA转换模块</a> <a href="/tags/AT24C02-EEPROM%E8%8A%AF%E7%89%87/" style="font-size: 10px;">AT24C02(EEPROM芯片)</a> <a href="/tags/DS1302%E5%AE%9E%E6%97%B6%E6%97%B6%E9%92%9F/" style="font-size: 10px;">DS1302实时时钟</a> <a href="/tags/DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" style="font-size: 10px;">DS18B20温度传感器</a> <a href="/tags/LED%E6%A8%A1%E5%9D%97/" style="font-size: 20px;">LED模块</a> <a href="/tags/NE555%E8%8A%AF%E7%89%87/" style="font-size: 10px;">NE555芯片</a> <a href="/tags/OpenCV%E5%AF%B9%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">OpenCV对图片操作</a> <a href="/tags/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/" style="font-size: 10px;">STL模板库</a> <a href="/tags/tajan/" style="font-size: 10px;">tajan</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">定时器模块</a> <a href="/tags/%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">按键模块</a> <a href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1%E6%A8%A1%E5%9D%97/" style="font-size: 10px;">数码管模块</a> <a href="/tags/%E6%98%93%E9%94%99%E6%B1%87%E6%80%BB/" style="font-size: 10px;">易错汇总</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E7%B4%A0%E6%95%B0%E7%AD%9B/" style="font-size: 10px;">素数筛</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" style="font-size: 10px;">自定义排序规则</a> <a href="/tags/%E8%9C%82%E9%B8%A3%E5%99%A8%E5%8F%8A%E7%BB%A7%E7%94%B5%E5%99%A8/" style="font-size: 10px;">蜂鸣器及继电器</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">超声波测距</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/06/14/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B-%E6%98%93%E9%94%99%E6%B1%87%E6%80%BB/">蓝桥杯单片机备赛-易错汇总</a>
-          </li>
-        
-          <li>
-            <a href="/2025/05/10/OpenCV%E5%AF%B9%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C/">OpenCV对图片操作</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B12-%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/">蓝桥杯单片机备赛12-超声波测距</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B11-NE555%E8%8A%AF%E7%89%87/">蓝桥杯单片机备赛11-NE555芯片</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/08/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%A4%87%E8%B5%9B10-AT24C02(EEPROM%E8%8A%AF%E7%89%87)/">蓝桥杯单片机备赛10-AT24C02(EEPROM芯片)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-10-19T09:18:10.044Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.1.260810</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.1.260810"></script><script src="/js/main.js?v=5.7.1.260810"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
